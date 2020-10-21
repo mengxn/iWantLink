@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: default
 title: iWant.link
+description: This is home page
 ---
 
-# iWant.link
+## Home page 
