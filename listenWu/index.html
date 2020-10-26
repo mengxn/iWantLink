@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        li {
+            font-size: 18px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <ul>
+            <li v-for="(todo, index) in post_list" @click="play(index)">
+                {{ todo.title }}
+            </li>
+        </ul>
+
+        <div style="position:fixed;bottom:1em;z-index: 9999;width: 100%;text-align: center;">
+            <audio :src="audio_url" controls autoplay></audio>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                seen: true,
+                post_list: [],
+                audio_url: ""
+            },
+
+            methods: {
+                play: function (index) {
+                    this.audio_url = this.post_list[index].audio_url
+
+                },
+
+                loadData: function () {
+                    axios.get("http://abcode.xyz/static/wu.json").then(res => {
+                        console.log(res)
+                        this.post_list = res.data
+                    })
+                }
+            },
+
+            mounted: function () {
+                this.loadData()
+            }
+        })
+    </script>
+</body>
+
+</html>
