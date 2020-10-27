@@ -2,7 +2,12 @@
 <html>
 
 <head>
-    <title></title>
+    <title>每天听见吴晓波</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
@@ -11,7 +16,6 @@
         }
 
         body {
-            margin: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -20,6 +24,11 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
+
+        .active {
+            background-color: #e6e6e6;
+            color: orangered;
+        }
     </style>
 </head>
 
@@ -27,13 +36,14 @@
     <div id="app">
 
         <ul>
-            <li v-for="(todo, index) in post_list" @click="play(index)">
+            <li v-for="(todo, index) in post_list" @click="play(index)"
+                :class="[curr_index == index ? activeClass : '']">
                 {{ todo.title }}
             </li>
         </ul>
 
         <div style="position:fixed;bottom:1em;z-index: 9999;width: 100%;text-align: center;">
-            <audio :src="audio_url" controls autoplay></audio>
+            <audio id="audio" ref="audio" :src="audio_url" controls autoplay></audio>
         </div>
 
     </div>
@@ -44,18 +54,19 @@
                 message: 'Hello Vue!',
                 seen: true,
                 post_list: [],
-                audio_url: ""
+                audio_url: "",
+                curr_index: -1,
+                activeClass: 'active',
             },
 
             methods: {
                 play: function (index) {
                     this.audio_url = this.post_list[index].audio_url
-
+                    this.curr_index = index
                 },
 
                 loadData: function () {
                     axios.get("http://abcode.xyz/static/wu.json").then(res => {
-                        console.log(res)
                         this.post_list = res.data
                     })
                 }
