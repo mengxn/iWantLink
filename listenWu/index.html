@@ -48,9 +48,9 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="(todo, index) in post_list.slice(slice_start, slice_start + count)" :key="index"
+            <li v-for="(post, index) in post_list.slice(slice_start, slice_start + count)" :key="index"
                 @click="play(index)" :class="[curr_index == index ? activeClass : '']">
-                {{ todo.title }}
+                {{ post.title }}
             </li>
         </ul>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="floating">
-            <audio id="audio" ref="audio" :src="audio_url" controls autoplay></audio>
+            <audio :src="audio_url" controls autoplay></audio>
         </div>
 
     </div>
