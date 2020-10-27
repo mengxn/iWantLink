@@ -48,8 +48,8 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="(post, index) in post_list.slice(slice_start, slice_start + count)" :key="index"
-                @click="play(index)" :class="[curr_index == index ? activeClass : '']">
+            <li v-for="(post, index) in display_list" :key="index" @click="play(index)"
+                :class="[curr_index == index ? activeClass : '']">
                 {{ post.title }}
             </li>
         </ul>
@@ -77,8 +77,9 @@
             },
 
             computed: {
-                slice_start: function () {
-                    return (this.page - 1) * this.count
+                display_list: function () {
+                    var start = (this.page - 1) * this.count
+                    return this.post_list.slice(start, start + this.count)
                 },
                 has_previous: function () {
                     return this.page > 1 ? true : false
