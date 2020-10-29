@@ -1,7 +1,7 @@
 ---
 layout: default
 title: iWant.link
-description: This is home page
+description: Here, link the world !
 ---
 
-## Home page 
+[每天听见吴晓波](listenWu)
