@@ -87,14 +87,14 @@
             },
 
             methods: {
-                play: function (index) {
-                    this.audio_url = this.post_list[index].audio_url
-                    this.curr_index = index
-                },
                 loadData: function () {
                     axios.get("http://abcode.xyz/static/wu.json").then(res => {
                         this.post_list = res.data
                     })
+                },
+                play: function (index) {
+                    this.audio_url = this.display_list[index].audio_url
+                    this.curr_index = index
                 },
                 previous: function () {
                     this.page = Math.max(this.page - 1, 1)
