@@ -98,9 +98,11 @@
                 },
                 previous: function () {
                     this.page = Math.max(this.page - 1, 1)
+                    this.curr_index = -1
                 },
                 next: function () {
                     this.page += 1
+                    this.curr_index = -1
                 },
             },
 
