@@ -9,4 +9,5 @@ description: Here, link the world !
 [香帅中国财富报告2020-2021](caifubaogao2020)  
 [卓克·科技参考](kejicankao)  
 [老梁的四大名著情商课](laoliang)  
-[人生必读的30本情商书](qingshang30)
+[人生必读的30本情商书](qingshang30)  
+[冯仑带你认清楼市真相](fenglun)
