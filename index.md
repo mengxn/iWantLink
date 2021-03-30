@@ -7,5 +7,6 @@ description: Here, link the world !
 [每天听见吴晓波](listenWu)  
 [精英日课4](jingying4)  
 [香帅中国财富报告2020-2021](caifubaogao2020)  
-[卓克·科技参考](kejicankao)
-[老梁的四大名著情商课](laoliang)
+[卓克·科技参考](kejicankao)  
+[老梁的四大名著情商课](laoliang)  
+[人生必读的30本情商书](qingshang30)
