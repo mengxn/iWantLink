@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <copyright>个人 @iWant.link</copyright>
     <language>zh-ch</language>
@@ -1117,4 +1117,4 @@
       <itunes:duration>1403706</itunes:duration>
     </item>
   </channel>
-</Rss>
+</rss>
