@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>传习录</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        li {
+            font-size: 18px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .floating {
+            position: fixed;
+            bottom: 1em;
+            z-index: 9999;
+            width: 100%;
+            text-align: center;
+        }
+
+        .active {
+            background-color: #e6e6e6;
+            color: orangered;
+        }
+
+        .paging {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(post, index) in display_list" :key="index" @click="play(index)"
+                :class="[curr_index == index ? activeClass : '']">
+                {{ post.title }}
+            </li>
+        </ul>
+
+        <div class="paging">
+            <button @click="previous" v-if="has_previous">上一页</button>
+            <button @click="next">下一页</button>
+        </div>
+
+        <div class="floating">
+            <audio :src="audio_url" controls autoplay></audio>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                post_list: [],
+                audio_url: "",
+                curr_index: -1,
+                activeClass: 'active',
+                page: 1,
+                count: 20,
+            },
+
+            computed: {
+                display_list: function () {
+                    var start = (this.page - 1) * this.count
+                    return this.post_list.slice(start, start + this.count)
+                },
+                has_previous: function () {
+                    return this.page > 1 ? true : false
+                }
+            },
+
+            methods: {
+                loadData: function () {
+                    axios.get("./data.json").then(res => {
+                        this.post_list = res.data
+                    })
+                },
+                play: function (index) {
+                    this.audio_url = this.display_list[index].audio_url
+                    this.curr_index = index
+                },
+                previous: function () {
+                    this.page = Math.max(this.page - 1, 1)
+					this.curr_index = -1
+                },
+                next: function () {
+                    this.page += 1
+					this.curr_index = -1
+                },
+            },
+
+            mounted: function () {
+                this.loadData()
+            }
+        })
+    </script>
+</body>
+
+</html>
