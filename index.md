@@ -30,6 +30,9 @@ description: Here, link the world !
 [小狗钱钱](dogmoney)  
 [小家赚大钱](xiaojia)  
 
+## 管理
+[阿里组织力实战21课](alizuzhili)  
+
 ## 语言
 ---
 [英语阅读](lls)  
