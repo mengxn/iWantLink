@@ -29,6 +29,7 @@ description: Here, link the world !
 [财富自由之路](caifuziyou)  
 [小狗钱钱](dogmoney)  
 [小家赚大钱](xiaojia)  
+[财商心理课](caishang)  
 
 ## 管理
 [阿里组织力实战21课](alizuzhili)  
