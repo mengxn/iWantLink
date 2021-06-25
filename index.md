@@ -12,6 +12,7 @@ description: Here, link the world !
 [你的灯亮着吗](light)  
 [精进](jingjin)  
 [采铜解读《跳出你的思维陷阱》](caitongsiwei)  
+[《塔木德》学习的智慧](tamude)  
 
 ## 心理
 ---
